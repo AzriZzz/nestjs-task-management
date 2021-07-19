@@ -40,3 +40,11 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+When connecting with TypeORMModule.forRoot
+Please run this command accoring to your package manager
+$ npm i rxjs@^7
+$ yarn add rxjs@^7
+$ pnpm i rxjs @^7
+
+<p>If you're using Nest v8, RxJS version 7 is used, which no longer has a toPromise() method for Observables, so Nest uses the lastValueFrom method instead. If you're receiving this error, you probably need to update your rxjs dependency to >7.</p>
