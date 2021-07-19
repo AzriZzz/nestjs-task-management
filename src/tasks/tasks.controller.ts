@@ -19,7 +19,6 @@ import { TasksService } from './tasks.service';
 export class TasksController {
   constructor(private tasksService: TasksService) {}
 
-  
   // @Get()
   // getTasks(@Query() filterDto: GetTasksFilterDTO): Task[] {
   //   // if we have any filter defined, call taskservice.getTaskServiceFilters
@@ -37,15 +36,15 @@ export class TasksController {
     return this.tasksService.getTaskById(id);
   }
 
-  // @Post()
-  // createTask(@Body() createTaskDTO: CreateTaskDTO): Task {
-  //   return this.tasksService.createTasks(createTaskDTO);
-  // }
+  @Post()
+  createTask(@Body() createTaskDTO: CreateTaskDTO): Promise<Task> {
+    return this.tasksService.createTasks(createTaskDTO);
+  }
 
-  // @Delete('/:id')
-  // deleteTaskById(@Param('id') id: string): void {
-  //   return this.tasksService.deleteTask(id);
-  // }
+  @Delete('/:id')
+  deleteTaskById(@Param('id') id: string): Promise<void> {
+    return this.tasksService.deleteTask(id);
+  }
 
   // @Patch('/:id/status')
   // updateTaskById(
