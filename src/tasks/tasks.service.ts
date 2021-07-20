@@ -52,10 +52,12 @@ export class TasksService {
     
   }
 
+  async updateTaskById(id: string, status: TaskStatus): Promise<Task> {
+    const task = await this.getTaskById(id);
 
-  // updateTaskById(id: string, status: TaskStatus): Task {
-  //   const index = this.tasks.findIndex((task) => task.id === id);
-  //   this.tasks[index].status = status;
-  //   return this.tasks[index];
-  // }
+    task.status = status;
+
+    await this.taskRepository.save(task);
+    return task;
+  }
 }
