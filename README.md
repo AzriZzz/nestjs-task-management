@@ -41,8 +41,8 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-When connecting with TypeORMModule.forRoot
-Please run this command accoring to your package manager
+When connecting with TypeOrmModule.forRoot <br>
+Please run this command according to your package manager
 ```bash
 $ npm i rxjs@^7
 
