@@ -21,7 +21,7 @@ export class TasksRepository extends Repository<Task> {
 
     if (search) {
       query.andWhere(
-        'LOWER(task.title) LIKE LOWER(:search) OR LOWER(task.description) LIKE LOWER(:search)',
+        '(LOWER(task.title) LIKE LOWER(:search) OR LOWER(task.description) LIKE LOWER(:search))',
         { search: `%${search}%` },
       );
     }
@@ -44,8 +44,8 @@ export class TasksRepository extends Repository<Task> {
     return task;
   }
 
-  async getTaskById(id: string): Promise<Task> {
-    const found = await this.findOne(id);
+  async getTaskById(id: string, user: User): Promise<Task> {
+    const found = await this.findOne({ where: {id, user} });
 
     if (!found) {
       this.returnErrorById(id);
